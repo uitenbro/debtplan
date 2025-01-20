@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debt and Retirement Planner</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="app.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Debt and Retirement Planner</h1>
+
+    <h2>Debts</h2>
+    <table id="debtTable">
+        <thead>
+            <tr>
+                <th>Debt</th>
+                <th>Starting Balance</th>
+                <th>Interest Rate (%)</th>
+                <th>Monthly Payment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" value="Credit Card"></td>
+                <td><input type="number" value="24000"></td>
+                <td><input type="number" value="18"></td>
+                <td><input type="number" value="700"></td>
+            </tr>
+            <tr>
+                <td><input type="text" value="Student Loan"></td>
+                <td><input type="number" value="50000"></td>
+                <td><input type="number" value="8.5"></td>
+                <td><input type="number" value="100"></td>
+            </tr>
+            <tr>
+                <td><input type="text" value="Retirement Plan Loan"></td>
+                <td><input type="number" value="26000"></td>
+                <td><input type="number" value="9"></td>
+                <td><input type="number" value="300"></td>
+            </tr>
+            <tr>
+                <td><input type="text" value="Second Mortgage"></td>
+                <td><input type="number" value="33000"></td>
+                <td><input type="number" value="7"></td>
+                <td><input type="number" value="315"></td>
+            </tr>
+            <tr>
+                <td><input type="text" value="Car Loan"></td>
+                <td><input type="number" value="36000"></td>
+                <td><input type="number" value="7"></td>
+                <td><input type="number" value="575"></td>
+            </tr>
+            <tr>
+                <td><input type="text" value="Truck Loan"></td>
+                <td><input type="number" value="55000"></td>
+                <td><input type="number" value="8"></td>
+                <td><input type="number" value="520"></td>
+            </tr>
+            <tr>
+                <td><input type="text" value="Mortgage"></td>
+                <td><input type="number" value="125000"></td>
+                <td><input type="number" value="6"></td>
+                <td><input type="number" value="777"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Retirement Conditions</h2>
+    <table id="retirementTable">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Current Savings ($)</td>
+                <td><input type="number" value="200000"></td>
+            </tr>
+            <tr>
+                <td>Annual Income 1 ($)</td>
+                <td><input type="number" value="195000"></td>
+            </tr>
+            <tr>
+                <td>Annual Income 2 ($)</td>
+                <td><input type="number" value="55000"></td>
+            </tr>
+            <tr>
+                <td>Years Until Jenn Retires (#)</td>
+                <td><input type="number" value="10"></td>
+            </tr>
+            <tr>
+                <td>Annual Contribution (%)</td>
+                <td><input type="number" value="9"></td>
+            </tr>
+            <tr>
+                <td>Employer Match (%)</td>
+                <td><input type="number" value="6"></td>
+            </tr>
+            <tr>
+                <td>Annual Return (%)</td>
+                <td><input type="number" value="6"></td>
+            </tr>
+            <tr>
+                <td>Years to Forecast</td>
+                <td><input type="number" value="25"></td>
+            </tr>
+            <tr>
+                <td>Retirement Ages</td>
+                <td><input type="text" value="60,65,70,75"></td>
+            </tr>
+            <tr>
+                <td>Withdrawal Rate (%)</td>
+                <td><input type="number" value="4"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button onclick="runCalculations()">Run Calculations</button>
+
+    <h2>Debt Burndown Chart</h2>
+    <canvas id="debtChart"></canvas>
+
+    <h2>Retirement Forecast Chart</h2>
+    <canvas id="retirementChart"></canvas>
+
+    
+</body>
+</html>

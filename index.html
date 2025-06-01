@@ -36,55 +36,99 @@
                 <th>Starting Balance</th>
                 <th>Interest Rate (%)</th>
                 <th>Monthly Payment</th>
+                <th>Consolidate</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td><input type="text" value="Credit Card"></td>
-                <td><input type="number" value="25000"></td>
-                <td><input type="number" value="18"></td>
-                <td><input type="number" value="1800"></td>
+                <td><input type="number" value="50000"></td>
+                <td><input type="number" value="20"></td>
+                <td><input type="number" value="800"></td>
+                <td><input type="checkbox" checked></td>
             </tr>
             <tr>
                 <td><input type="text" value="Student Loan"></td>
-                <td><input type="number" value="75000"></td>
+                <td><input type="number" value="100000"></td>
                 <td><input type="number" value="8.5"></td>
-                <td><input type="number" value="100"></td>
+                <td><input type="number" value="700"></td>
+                <td><input type="checkbox" unchecked></td>
             </tr>
             <tr>
                 <td><input type="text" value="Retirement Plan Loan"></td>
                 <td><input type="number" value="26000"></td>
                 <td><input type="number" value="9"></td>
                 <td><input type="number" value="300"></td>
+                <td><input type="checkbox" checked></td>
             </tr>
             <tr>
                 <td><input type="text" value="Second Mortgage"></td>
                 <td><input type="number" value="33000"></td>
                 <td><input type="number" value="7"></td>
                 <td><input type="number" value="315"></td>
+                <td><input type="checkbox" checked></td>
             </tr>
             <tr>
                 <td><input type="text" value="Car Loan"></td>
                 <td><input type="number" value="36000"></td>
                 <td><input type="number" value="7"></td>
                 <td><input type="number" value="575"></td>
+                <td><input type="checkbox" checked></td>
             </tr>
             <tr>
                 <td><input type="text" value="Truck Loan"></td>
-                <td><input type="number" value="55000"></td>
-                <td><input type="number" value="8"></td>
-                <td><input type="number" value="520"></td>
+                <td><input type="number" value="25000"></td>
+                <td><input type="number" value="9"></td>
+                <td><input type="number" value="480"></td>
+                <td><input type="checkbox" unchecked></td>
             </tr>
             <tr>
                 <td><input type="text" value="Mortgage"></td>
                 <td><input type="number" value="125000"></td>
                 <td><input type="number" value="6"></td>
                 <td><input type="number" value="777"></td>
+                <td><input type="checkbox" checked></td>
             </tr>
         </tbody>
     </table>
 
+    <h3>Refinance Settings</h3>
+    <label>Interest Rate (%): <input id="refiRate" type="number" value="6.75" step="0.01"></label><br>
+    <label>Term (Years): <input id="refiTerm" type="number" value="30"></label><br>
+    <label>Principal ($): <input id="refiPrincipal" type="number" readonly></label><br>
+    <label>Monthly Payment ($): <input id="refiPayment" type="number" readonly></label><br>
+
+
+    <h2>Extra Payment Settings</h2>
+    <table>
+    <tr><td>
+    <label for="extraPaymentStartYear">Start Extra Payment After Year:</label></td>
+    <td>
+    <input type="number" id="extraPaymentStartYear" value="5" min="0" /></td>
+    </tr>
+    <td>
+    <label for="extraPaymentAmount">Extra Monthly Payment ($):</label></td>
+    <td>
+    <input type="number" id="extraPaymentAmount" value="2000" min="0" /></td>
+    </tr>
+    </table>
+    
+    <button onclick="runCalculations()">Run Calculations</button>
+    
+    <h2>Debt Burndown Charts</h2>
+    <div style="display: flex; gap: 20px; height: 680px;">
+      <div style="flex: 1;">
+        <h3>Original Scenario</h3>
+        <canvas id="originalDebtChart" height="300"></canvas>
+      </div>
+      <div style="flex: 1; height: 680px;">
+        <h3>Refinanced Scenario</h3>
+        <canvas id="debtChart" height="300"></canvas>
+      </div>
+    </div>
+    <br/>
     <h2>Retirement Conditions</h2>
+    <div>
     <table id="retirementTable">
         <thead>
             <tr>
@@ -121,13 +165,11 @@
                 <td>Annual Return (%)</td>
                 <td><input type="number" value="6"></td>
             </tr>
-            <tr>
-                <td>Years to Forecast</td>
-                <td><input type="number" value="25"></td>
-            </tr>
+            <tr><td>Current Age</td><td><input type="number" value="51"></td></tr>
+            <tr><td>Age to Forecast To</td><td><input type="number" value="85"></td></tr>
             <tr>
                 <td>Retirement Ages</td>
-                <td><input type="text" value="60,65,70,75"></td>
+                <td><input type="text" value="62,65,67,70,72,75"></td>
             </tr>
             <tr>
                 <td>Withdrawal Rate (%)</td>
@@ -135,15 +177,14 @@
             </tr>
         </tbody>
     </table>
+    </div>
 
     <button onclick="runCalculations()">Run Calculations</button>
-
-    <h2>Debt Burndown Chart</h2>
-    <canvas id="debtChart"></canvas>
-
+    
+    <div style = "max-width: 1280px">
     <h2>Retirement Forecast Chart</h2>
-    <canvas id="retirementChart"></canvas>
-
+    <canvas id="retirementChart" style = "width: 1280px; height: 680px"></canvas>
+    </div>
     
 </body>
 </html>

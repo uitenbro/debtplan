@@ -122,6 +122,9 @@ function plotDebtBurndown(debts, extraPaymentStartYear, extraPaymentAmount, canv
         datePointer.setMonth(datePointer.getMonth() + 1);
     }
 
+    // Sort debts by interest rate
+    debts.sort((a, b) => b.rate - a.rate);
+
     const debtHistory = debts.map(debt => ({ ...debt, history: [] }));
     let finalIndex = maxIterations;
     const extraStart = extraPaymentStartYear * 12;

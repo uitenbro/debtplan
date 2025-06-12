@@ -20,7 +20,8 @@ const colorPalette = [
     '#FFD700', // gold (bright yellow)
     '#00B3E6', // teal
     '#A020F0', // purple
-    '#3366E6'  // blue
+    '#3366E6', // blue
+    '##FEFEFE'  // dark gray
 ];
 
 // Keep track of which color index we're on

@@ -45,11 +45,12 @@ function runCalculations() {
     document.querySelectorAll('#debtTable tbody tr').forEach(row => {
         const cells = row.querySelectorAll('td input');
         const debt = {
-            debt: cells[0].value,
-            balance: parseFloat(cells[1].value),
-            rate: parseFloat(cells[2].value) / 100,
-            payment: parseFloat(cells[3].value),
-            consolidate: cells[4].checked
+            order: parseInt(cells[0].value),
+            debt: cells[1].value,
+            balance: parseFloat(cells[2].value),
+            rate: parseFloat(cells[3].value) / 100,
+            payment: parseFloat(cells[4].value),
+            consolidate: cells[5].checked
         };
         debts.push(debt);
 
@@ -123,8 +124,8 @@ function plotDebtBurndown(debts, extraPaymentStartYear, extraPaymentAmount, canv
         datePointer.setMonth(datePointer.getMonth() + 1);
     }
 
-    // Sort debts by interest rate
-    debts.sort((a, b) => b.rate - a.rate);
+    // Sort debts by order
+    debts.sort((a, b) => a.order - b.order);
 
     const debtHistory = debts.map(debt => ({ ...debt, history: [] }));
     let finalIndex = maxIterations;
